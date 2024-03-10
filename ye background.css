@@ -1,0 +1,6 @@
+body {
+    background-image: url('C:\Users\test\Downloads\fdae63e4849da7ffbde05c98d8e4dba1.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    color: black; /* Set text color to white for better visibility */
+}
