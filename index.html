@@ -43,21 +43,59 @@
 <body>
     <div id="apology-text">I'm sorry BBG (aya), can you forgive me?</div>
     <img id="hamster-image" src="full.png" alt="Cute Hamster">
-    <button class="button green-button" onclick="showHeart()">YES</button>
-    <button class="button red-button" onclick="confirmRed()">NO</button>
+    <button id="yes-button" class="button green-button" onclick="confirmRed()">YES</button>
+    <button id="no-button" class="button red-button" onclick="showHeart()">NO</button>
 
     <script>
+        var apologyText = document.getElementById("apology-text");
+        var hamsterImage = document.getElementById("hamster-image");
+        var yesButton = document.getElementById("yes-button");
+        var noButton = document.getElementById("no-button");
+        var isFirstTime = true;
+        var messages = [
+            "Are you sure?",
+            "Are you absolutely sure?",
+            "Are you sure you won't reconsider?",
+            "Are you sure you want to do this?",
+            "Are you sure you want to proceed?",
+            "Are you really sure?"
+        ];
+        shuffleArray(messages);
+        var currentIndex = 0;
+
         function showHeart() {
-            alert("LETS GOOOOOOOOO (i love you)❤️");
+            if (isFirstTime) {
+                apologyText.innerText = messages[currentIndex];
+                currentIndex = (currentIndex + 1) % messages.length;
+                yesButton.innerText = "It's okay";
+                yesButton.onclick = showHeart;
+                noButton.innerText = "I WON'T";
+                noButton.onclick = function() {
+                    apologyText.innerText = messages[currentIndex];
+                    currentIndex = (currentIndex + 1) % messages.length;
+                };
+            } else {
+                apologyText.innerText = "LETS GOOOOOOOOO (i love you)❤️";
+                hamsterImage.src = "bg_f8f8f8-flat_750x_075_f-pad_750x1000_f8f8f8-removebg-preview (1).png";
+                yesButton.style.display = "none";
+                noButton.style.display = "none";
+            }
+            isFirstTime = false;
         }
 
         function confirmRed() {
-            var apologyText = document.getElementById("apology-text");
-            apologyText.innerText = "ARE YOU SURE?";
-            var response = confirm("Are you sure?");
-            if (!response) {
-                // Keep showing the "ARE YOU SURE?" message
-                confirmRed();
+            apologyText.innerText = "LETS GOOOOOOOOO (i love you)❤️";
+            hamsterImage.src = "bg_f8f8f8-flat_750x_075_f-pad_750x1000_f8f8f8-removebg-preview (1).png";
+            yesButton.style.display = "none";
+            noButton.style.display = "none";
+        }
+
+        function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
             }
         }
     </script>
