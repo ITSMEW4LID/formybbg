@@ -46,6 +46,8 @@
     <button id="yes-button" class="button green-button" onclick="confirmRed()">YES</button>
     <button id="no-button" class="button red-button" onclick="showHeart()">NO</button>
 
+    <audio id="audio" src="Champagne poetry but without Drake (Audio).mp3"></audio>
+
     <script>
         var apologyText = document.getElementById("apology-text");
         var hamsterImage = document.getElementById("hamster-image");
@@ -79,6 +81,9 @@
                 hamsterImage.src = "bg_f8f8f8-flat_750x_075_f-pad_750x1000_f8f8f8-removebg-preview (1).png";
                 yesButton.style.display = "none";
                 noButton.style.display = "none";
+                // Play the audio
+                var audio = document.getElementById("audio");
+                audio.play();
             }
             isFirstTime = false;
         }
@@ -88,6 +93,9 @@
             hamsterImage.src = "bg_f8f8f8-flat_750x_075_f-pad_750x1000_f8f8f8-removebg-preview (1).png";
             yesButton.style.display = "none";
             noButton.style.display = "none";
+            // Play the audio
+            var audio = document.getElementById("audio");
+            audio.play();
         }
 
         function shuffleArray(array) {
